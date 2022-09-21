@@ -25,7 +25,7 @@ jobs:
         \ ' ' )\necho \"::set-output name=authTokenJson::$respJson\""
     - uses: actions/checkout@v2
     - name: Build with Maven
-      run: mvn -q --batch-mode --update-snapshots verify
+      run: mvn -q --batch-mode --update-snapshots verify -Dmaven.test.skip=true
     - name: Scan Initiated
       id: sec_scan_init
       run: "usrVal=$(echo '${{fromJson(steps.auth_token.outputs.authTokenJson).user}}'\
